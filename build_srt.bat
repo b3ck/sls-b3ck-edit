@@ -1,0 +1,1 @@
+powershell -Command "docker build -t sls ."
