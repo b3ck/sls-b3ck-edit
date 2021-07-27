@@ -5,7 +5,7 @@ To streamline an SRT solution for the IRL community, with NOALBS(https://b3ck.co
 Starting Notes:
 ============
 - Cloned from https://gitlab.com/mattwb65/srt-live-server
-- Edited by b3ck for the IRL Community
+- Edited by b3ck for the IRL Community (Added Credits & Links during server bootup to help others)
 - This readme only covers Docker Desktop for Windows, but may have similarities to other Operating Systems but it's not intended.
 
 
