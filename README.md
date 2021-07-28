@@ -126,4 +126,4 @@ v1.4.8-b (b3ck edit)
 
 Contact / Support
 ============
-If you have any issues feel free to message me on discord @ `b3ck#3517`
+If you have any issues feel free to message me on [discord](https://discordapp.com/channels/@me/96991451006660608) @ `b3ck#3517`
