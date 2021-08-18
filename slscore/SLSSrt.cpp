@@ -189,7 +189,10 @@ int CSLSSrt::libsrt_setup(int port)
 */
 
     int enable = 0;
+    int lossmaxttlvalue = 40;
+
     srt_setsockopt(fd, SOL_SOCKET, SRTO_IPV6ONLY, &enable, sizeof(enable));
+    srt_setsockopt(fd, SOL_SOCKET, SRTO_LOSSMAXTTL, &lossmaxttlvalue, sizeof(lossmaxttlvalue));
     
     /* Set the socket's send or receive buffer sizes, if specified.
        If unspecified or setting fails, system default is used. */
