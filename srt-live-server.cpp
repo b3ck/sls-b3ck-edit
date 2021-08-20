@@ -68,6 +68,7 @@ static void usage()
     printf("--------------------------------------------------------\n");
     printf(">> SRT-LIVE-SERVER \n");
     printf(">> v1.4.8-b \n");
+    printf(">> with SRTLA Hotfix \n");
     printf(">> Need help? add me on discord b3ck#3517 \n");
     printf(">> Get NOALBS @ b3ck.com/noalbs \n");
     printf(">> Special Thanks to oozebrood, matthewwb2 and kyle___d \n");
