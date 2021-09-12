@@ -16,7 +16,7 @@ Normally, the latency of transport by SLS is less than 1 second in internet.
 
 
 Requirements:
-==============
+============
 Install Docker >> https://docs.docker.com/get-docker/
 
 Command Line Alternative:
@@ -27,7 +27,7 @@ docker run -d -p 30000:30000/udp -p 8181:8181/tcp --name=sls-b3ck-edit --restart
 ```
 
 Install Instructions (Using Docker Desktop):
-==============
+============
 - Run this command in a Command window or PowerShell: `docker pull b3ckontwitch/sls-b3ck-edit`
 - Open your Docker Dashboard, click on Images on the left and you should see `b3ckontwitch/sls-b3ck-edit` listed.
 - Hover over the `b3ckontwitch/sls-b3ck-edit` image you should see a `RUN` button on the right, hit the `RUN` button.
@@ -98,7 +98,7 @@ srt {
 > ![image](https://user-images.githubusercontent.com/1740542/110266056-a378a180-7f82-11eb-8806-c1cf968dc30f.png)
 
 Viewing your SRT stream in OBS:
-==============
+============
 OBS supports SRT protocol to view stream when version is later than v25.0. you can use the following URL in media source:
 
 `srt://<YOUR-IP>:<PORT>?streamid=play/live/feed1`
@@ -106,14 +106,48 @@ example: `srt://127.0.0.1:30000?streamid=play/live/feed1`
 
 ![image](https://user-images.githubusercontent.com/1740542/110401480-4262d380-803f-11eb-96f7-8c1760010d00.png)
 
-Final Notes:
-=====
+Things to Know:
+https://apps.apple.com/us/app/larix-broadcaster/id1042474385
 
-1. SLS refers to the RTMP URL format(domain/app/stream_name), example: publish/live/feed1. The URL of SLS must be set in streamid parameter of SRT, which will be the unique identification a stream.
+1.) SLS refers to the RTMP URL format(domain/app/stream_name), example: publish/live/feed1. The URL of SLS must be set in streamid parameter of SRT, which will be the unique identification a stream.
 
-2. How to distinguish the publisher and player of the same stream? In conf file, you can set parameters of domain_player/domain_publisher and app_player/app_publisher to resolve it. Importantly, the two combination strings of domain_publisher/app_publisher and domain_player/app_player must not be equal in the same server block.
+2.) How to distinguish the publisher and player of the same stream? In conf file, you can set parameters of domain_player/domain_publisher and app_player/app_publisher to resolve it. Importantly, the two combination strings of domain_publisher/app_publisher and domain_player/app_player must not be equal in the same server block.
 
-3. There is a simple android app for test sls, your can download from https://github.com/Edward-Wu/liteplayer-srt
+3.) There is an APP you can use on your phone to stream to your SRT server:
+- Android: https://play.google.com/store/apps/details?id=com.wmspanel.larix_broadcaster
+- Apple: https://apps.apple.com/us/app/larix-broadcaster/id1042474385
+
+VMware - Docker Desktop Prerequisites (Provided by: Th3GamerVerse)
+============
+If you want to use Docker inside a VMWare Virtual Machine follow these steps:
+
+1.) (In VMWare) Make sure the Docker VM BIOS is set to allow virtualization:
+- a.) Shutdown the Docker VM (VM must be turned OFF)
+- b.) Right click the Docker VM and choose “Edit Settings” 
+
+![image](https://user-images.githubusercontent.com/1740542/132995110-b55bff56-3dc8-4400-bf01-e26c4e1335db.png)
+
+- c.) Expand CPU setting:
+
+![image](https://user-images.githubusercontent.com/1740542/132995148-49cc26c3-7512-4e3a-8917-d10b9d2faef4.png)
+
+- d.) Select the “Expose hardware assisted virtualization to the guest OS” option:
+
+![image](https://user-images.githubusercontent.com/1740542/132995189-231f2905-711a-4f59-a563-218105a1bbeb.png)
+
+- e.) Power the Docker VM back up and continue with the following steps.
+
+2.) Run these commands in PowerShell (on the Docker VM): (May not be needed in all cases)
+- `Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All`
+- `Enable-WindowsOptionalFeature -Online -FeatureName Containers -All`
+
+3.) Install: https://wslstorestorage.blob.core.windows.net/wslblob/wsl_update_x64.msi
+
+4.) Run this final command in PowerShell:
+- `wsl --set-default-version 2`
+
+5.) After you have done all of this you should be able to install and run Docker Desktop in a Windows Virtual Machine using VMWare.
+
 
 Release Notes
 ============
@@ -123,6 +157,7 @@ v1.4.8-b (b3ck edit)
 2. Added Credits and Resources for the IRL Community.
 3. Edited `DockerFile` to `checkout` the `master` from the SRT Source.
 4. Created Windows Batch Files to build and start the SLS `DockerFile`.
+5. Added support for SRTLA connections.
 
 Contact / Support
 ============
