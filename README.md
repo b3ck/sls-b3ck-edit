@@ -23,7 +23,7 @@ Command Line Alternative:
 ============
 If you don't want to use the Docker Desktop you can alternatively run this command after installing docker:
 ```
-docker run -d -p 30000:30000/udp -p 8181:8181/tcp --name=sls-b3ck-edit --restart=always --pull=always -v /var/run/docker.sock:/var/run/docker.sock -v sls-b3ck-edit_data:/data b3ckontwitch/sls-b3ck-edit
+docker run -d -p 30000:30000/udp -p 8181:8181/tcp --name=sls-b3ck-edit --restart=always --pull=always -v sls-b3ck-edit_data:/data b3ckontwitch/sls-b3ck-edit
 ```
 
 Install Instructions (Using Docker Desktop):
