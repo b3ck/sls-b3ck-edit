@@ -202,7 +202,7 @@ int main(int argc, char* argv[])
         res.set_content(ret.dump(), "application/json");
     });
     
-    if (conf_srt->http_port != NULL) {
+    if (conf_srt->http_port != 0) {
         httpPort = conf_srt->http_port;
     }
     std::thread(httpWorker, std::ref(httpPort)).detach();

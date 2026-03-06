@@ -7,7 +7,7 @@ LIBRARY_FILE = -lpthread -lz -lsrt
 BIN_PATH = ./bin
 
 DEBUG = -g
-CFLAGS += $(DEBUG) -w -fcompare-debug-second 
+CFLAGS += $(DEBUG) -w
 
 LOG_PATH = ./logs
 
@@ -58,9 +58,8 @@ all: $(OBJS)
 	#******************************************************************************#
 
 $(OUTPUT_PATH)/%.o: ./$(CORE_PATH)/%.cpp
-	${CXX} -c $(CFLAGS) $< -o $@ $(INC_FLAGS)
+	${CXX} -c $(CFLAGS) $< -o $@ $(INC_PATH)
 
 clean:
 	rm -f $(OUTPUT_PATH)/*.o
 	rm -rf $(BIN_PATH)/*
-

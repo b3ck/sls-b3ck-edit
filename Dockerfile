@@ -1,5 +1,5 @@
 # build stage
-FROM alpine:latest as build
+FROM alpine:latest AS build
 RUN apk update &&\
     apk upgrade &&\ 
     apk add --no-cache linux-headers alpine-sdk cmake tcl openssl-dev zlib-dev
@@ -9,11 +9,11 @@ RUN git clone https://github.com/Haivision/srt.git
 WORKDIR /tmp/srt
 RUN git checkout master && ./configure && make -j8 && make install
 WORKDIR /tmp/srt-live-server
-RUN make -j8
+RUN make clean && make -j1
 
 # final stage
 FROM alpine:latest
-ENV LD_LIBRARY_PATH /lib:/usr/lib:/usr/local/lib64
+ENV LD_LIBRARY_PATH=/lib:/usr/lib:/usr/local/lib64
 RUN apk update &&\
     apk upgrade &&\
     apk add --no-cache openssl libstdc++ &&\
